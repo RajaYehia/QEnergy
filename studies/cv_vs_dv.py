@@ -160,19 +160,23 @@ Energy_GM_Ht2P = [Experiment_GM_Ht2P.total_energy(t) / MJ for t in tsk_GM_Ht2P]
 skrCV = Experiment_GM_Ht2P.compute_secret_key_rate()
 taudsp = 0.006
 taudsp2 = 0.018
+taudsp3 = 0.0003
 Edsp = []
 Edsp2 = []
+Edsp3 = []
 for t in skrCV:
     Edsp.append(taudsp * gigabit / t * cvqkd_rate / MJ)
     Edsp2.append(taudsp2 * gigabit / t * cvqkd_rate / MJ)
+    Edsp3.append(taudsp3 * gigabit / t * cvqkd_rate / MJ)
 
-
+Energy_GM_Ht2P_withDSPsupersmall = []
 Energy_GM_Ht2P_withDSPsmall = []
 Energy_GM_Ht2P_withDSPbig = []
 
 for i in range(len(Energy_GM_Ht2P)):
     Energy_GM_Ht2P_withDSPsmall.append(Energy_GM_Ht2P[i] + Edsp[i])
     Energy_GM_Ht2P_withDSPbig.append(Energy_GM_Ht2P[i] + Edsp2[i])
+    Energy_GM_Ht2P_withDSPsupersmall.append(Energy_GM_Ht2P[i] + Edsp3[i])
 
 
 fig, ax = plt.subplots(1, figsize=FIGSIZE_FULL)
@@ -195,6 +199,11 @@ ax.plot(
     color="tab:orange",
     ls="-.",
     label="CV-QKD $\\tau_{DSP}=0.018$",
+)
+ax.plot(dist, Energy_GM_Ht2P_withDSPsupersmall,
+        color="tab:orange",
+        ls=":",
+        label="CV-QKD $\\tau_{DSP}=0.0003$"
 )
 
 # axins = ax.inset_axes(
