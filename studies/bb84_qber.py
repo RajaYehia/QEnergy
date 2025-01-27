@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from qenergy import components as comp
 from qenergy.experiments_dv import BB84Experiment
 
-from studies import FIGSIZE_FULL, EXPORT_DIR
+from studies import FIGSIZE_HALF, EXPORT_DIR
 
 dist = [d for d in range(100)]
 wavelength = 1550
@@ -71,7 +71,7 @@ Energyskr5 = [Experiment05.total_energy(t) / 1000000 for t in tskr5]
 Energyskr6 = [Experiment06.total_energy(t) / 1000000 for t in tskr6]
 
 
-fig, ax = plt.subplots(1, figsize=FIGSIZE_FULL)
+fig, ax = plt.subplots(1, figsize=FIGSIZE_HALF)
 ax.plot(dist, Energyskr, label="1\\%")
 ax.plot(dist, Energyskr2, label="2\\%")
 ax.plot(dist, Energyskr3, label="4\\%")
@@ -81,7 +81,7 @@ ax.plot(dist, Energyskr6, label="10\\%")
 # plt.yscale("log")
 ax.set(xlabel="Distance [km]", ylabel="Energy consumption [MJ]")
 ax.tick_params(axis="both", which="major")
-ax.legend(loc="upper left", title="QBER")
+ax.legend(loc="upper left", title="QBER", ncols=2)
 ax.set_title("$N_{\\rm target} = 1$ GBit")
 
 fig.savefig(EXPORT_DIR / "BB84QBERstudy.pdf", format="pdf")

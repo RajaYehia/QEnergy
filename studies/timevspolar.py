@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from qenergy import components as comp
 from qenergy.experiments_dv import BB84Experiment
 
-from studies import FIGSIZE_FULL, EXPORT_DIR
+from studies import FIGSIZE_HALF, EXPORT_DIR
 
 dist = [d for d in range(100)]
 gigabit = 1e9
@@ -58,7 +58,7 @@ Energypolar = [Experiment01.total_energy(t) / 1000000 for t in tskr]
 Energytimebin = [Experiment02.total_energy(t) / 1000000 for t in tskr2]
 
 
-fig, ax = plt.subplots(1, figsize=FIGSIZE_FULL)
+fig, ax = plt.subplots(1, figsize=FIGSIZE_HALF)
 plt.plot(dist, Energypolar, label="Polarization encoding")
 plt.plot(dist, Energytimebin, label="Time-bin encoding")
 

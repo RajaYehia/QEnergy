@@ -15,7 +15,7 @@ from qenergy.experiments_dv import (
     MDIQKDExperiment,
 )
 
-from studies import FIGSIZE_FULL, EXPORT_DIR
+from studies import FIGSIZE_HALF, EXPORT_DIR
 
 dist = [d for d in range(120)]
 gigabit = 1e9
@@ -104,7 +104,7 @@ EnergyBB84 = [Experiment01.total_energy(t) / 1000000 for t in tskr]
 EnergyE91 = [Experiment02.total_energy(t) / 1000000 for t in tskr2]
 EnergyMDI = [Experiment03.total_energy(t) / 1000000 for t in tskr3]
 
-fig, ax = plt.subplots(1, figsize=FIGSIZE_FULL)
+fig, ax = plt.subplots(1, figsize=FIGSIZE_HALF)
 ax.plot(dist, EnergyBB84, label="BB84")
 ax.plot(dist, EnergyE91, label="E91")
 ax.plot(dist, EnergyMDI, label="MDI")
